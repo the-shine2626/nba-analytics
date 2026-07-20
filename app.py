@@ -12,6 +12,8 @@ with st.spinner("Loading NBA data..."):
     teams = response.json()["data"]
     df = pd.DataFrame(teams)
 
+df = pd.DataFrame(teams)
+df = df[df["conference"].notna() & (df["conference"] != "")]
 df_clean = df[["full_name", "conference", "division", "city", "abbreviation"]].copy()
 df_clean.columns = ["Team", "Conference", "Division", "City", "Abbr"]
 df_clean = df_clean.sort_values("Team").reset_index(drop=True)
