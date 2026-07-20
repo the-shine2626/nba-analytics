@@ -7,7 +7,7 @@ st.subheader("Live team standings")
 
 with st.spinner("Loading NBA data..."):
     url = "https://api.balldontlie.io/v1/teams"
-    headers = {"Authorization": "0b6f3c84-de8c-4429-a5a2-3f8b7efd00a1"}
+    headers = {"Authorization": "d7796659-7085-488f-8a23-4f312f94c57a"}
     response = requests.get(url, headers=headers)
     teams = response.json()["data"]
     df = pd.DataFrame(teams)
