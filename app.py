@@ -21,8 +21,7 @@ with st.spinner("Loading NBA data..."):
 df = df[df["full_name"].isin(CURRENT_TEAMS)]
 df_clean = df[["full_name","conference","division","city","abbreviation"]].copy()
 df_clean.columns = ["Team","Conference","Division","City","Abbr"]
-df_clean = df_clean.sort_values("Team").reset_index(drop=True)
-
+df_clean = df_clean.drop_duplicates(subset=["Team"]).sort_values("Team").reset_index(drop=True)
 conf = st.selectbox("Filter by Conference", ["All", "East", "West"])
 if conf == "East":
     df_clean = df_clean[df_clean["Conference"] == "East"]
